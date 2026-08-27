@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Doro Live2D — 웹 뷰어</title>
+<link rel="icon" href="models/Doro/icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-grid">
+
+<canvas id="stage"></canvas>
+
+<div id="loader" class="loader">
+  <div class="spinner" aria-hidden="true"></div>
+  <p id="loader-text">Live2D 모델을 불러오는 중…</p>
+</div>
+
+<div id="hint" class="hint" hidden>
+  <b>캐릭터를 클릭</b>하면 또잉또잉 · <b>잡고 끌면</b> 쭉 늘어나요 · 배경 드래그로 이동 · 휠로 확대/축소
+</div>
+
+<button id="panel-toggle" class="panel-toggle" type="button" aria-expanded="true" aria-controls="panel">
+  <span aria-hidden="true">☰</span><span class="sr-only">패널 열기/닫기</span>
+</button>
+
+<aside id="panel" class="panel" aria-label="컨트롤 패널">
+  <header class="panel__head">
+    <img src="models/Doro/icon.png" alt="" class="panel__icon">
+    <div>
+      <h1>도로롱 <span>Live2D</span></h1>
+      <p class="panel__sub">Cubism 5 · 클릭 상호작용</p>
+    </div>
+  </header>
+
+  <section class="group">
+    <h2>표정 <small>(중복 토글 가능)</small></h2>
+    <div id="expression-buttons" class="chips"></div>
+  </section>
+
+  <section class="group">
+    <h2>동작</h2>
+    <div class="chips">
+      <button type="button" class="chip is-on" data-toggle="running">🏃 달리기</button>
+      <button type="button" class="chip is-on" data-toggle="tracking">👀 시선 추적</button>
+      <button type="button" class="chip" data-action="wave">✨ 리액션</button>
+      <button type="button" class="chip" data-action="talk">💬 말하기</button>
+    </div>
+  </section>
+
+  <section class="group">
+    <h2>화면</h2>
+    <div class="row">
+      <label for="scale-range">크기</label>
+      <input id="scale-range" type="range" min="0.3" max="2.5" step="0.01" value="1">
+      <output id="scale-out">100%</output>
+    </div>
+    <div class="chips">
+      <button type="button" class="chip" data-bg="bg-grid">체크무늬</button>
+      <button type="button" class="chip" data-bg="bg-dark">어두움</button>
+      <button type="button" class="chip" data-bg="bg-mint">민트</button>
+      <button type="button" class="chip" data-bg="bg-sunset">노을</button>
+    </div>
+    <div class="chips">
+      <button type="button" class="chip" data-action="reset">↺ 위치 초기화</button>
+      <button type="button" class="chip" data-action="shot">📸 PNG 저장</button>
+    </div>
+  </section>
+
+  <section class="group">
+    <h2>조작</h2>
+    <ul class="legend">
+      <li><b>캐릭터 클릭</b> — 또잉또잉 튕김</li>
+      <li><b>캐릭터 드래그</b> — 그 부위가 쭉 늘어남</li>
+      <li><b>배경 드래그</b> — 모델 위치 이동</li>
+      <li><b>휠 / 크기 슬라이더</b> — 확대 · 축소</li>
+      <li><b>숫자키 1~0</b> — 표정 토글, <b>C</b> 초기화</li>
+    </ul>
+    <p class="status">마지막 터치: <b id="last-hit">—</b></p>
+  </section>
+
+  <footer class="panel__foot">
+    모델: <a href="https://booth.pm/en/items/5867617" target="_blank" rel="noopener">도로롱 밈 Live2D 모델</a><br>
+    © <b>0x4682B4</b> (BOOTH) · Live2D Cubism Core © Live2D Inc.
+  </footer>
+</aside>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="vendor/live2dcubismcore.min.js"></script>
+<script src="vendor/pixi.min.js"></script>
+<script src="vendor/cubism4.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

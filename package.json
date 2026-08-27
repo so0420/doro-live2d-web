@@ -1,0 +1,12 @@
+{
+  "name": "doro-live2d-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Live2D 모델을 브라우저에서 띄우고 클릭으로 상호작용하는 뷰어",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "setup-model": "node tools/setup-model.js"
+  }
+}

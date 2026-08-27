@@ -1,0 +1,7 @@
+node_modules/
+.DS_Store
+
+# 모델 파일은 저작권 때문에 저장소에 넣지 않는다. README 의 "모델 준비" 참고.
+public/models/*
+!public/models/.gitkeep
+*.zip
